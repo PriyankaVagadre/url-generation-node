@@ -1,0 +1,24 @@
+{
+  "name": "url-generation-node",
+  "version": "1.0.0",
+  "description": "url generator project",
+  "homepage": "https://github.com/PriyankaVagadre/url-generation-node#readme",
+  "bugs": {
+    "url": "https://github.com/PriyankaVagadre/url-generation-node/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PriyankaVagadre/url-generation-node.git"
+  },
+  "license": "ISC",
+  "author": "Priyanka V Shukla",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "expess": "^0.0.1-security",
+    "mongoose": "^8.16.3"
+  }
+}
