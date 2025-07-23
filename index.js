@@ -3,12 +3,14 @@ const express = require('express');
 const app = express();
 
 const PORT =8001;
-
-const urlRouter = require('./routers/url')
-
 const {connectToDB} = require('./connect');
 
-connectToDB('mongodb://localhost:27017/shortURL').then(()=> console.log('db connected'))
+connectToDB('mongodb://127.0.0.1:27017/shorturl').then(()=> console.log('db connected'))
+
+
+const urlRouter = require('./routers/url');
+
+app.use(express.json())
 
 app.use('/url', urlRouter)
 
