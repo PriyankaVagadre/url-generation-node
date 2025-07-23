@@ -1,6 +1,6 @@
 
-import { nanoid } from 'nanoid';
-import URL from '../models/urls'
+const { nanoid } = require('nanoid');
+const URL =require('../routers/url')
 
 async function handelGenerateNewShortURL(req,res){
     if(!req.body) return res.status(400).json({'status':'not found'});
