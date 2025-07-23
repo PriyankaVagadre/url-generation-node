@@ -12,6 +12,8 @@ const urlRouter = require('./routers/url');
 
 app.use(express.json())
 
-app.use('/url', urlRouter)
+app.use('/', urlRouter)
+
+
 
 app.listen(PORT, ()=> console.log('Server started ' +`${PORT}`))

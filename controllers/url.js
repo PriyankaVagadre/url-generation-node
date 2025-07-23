@@ -8,14 +8,24 @@ async function handelGenerateNewShortURL(req,res){
     const shorId = '123';
 
     await URL.create({
-        shortId : shorId,
-        origalUrl: req?.body.url,
+        shortId : shorId+6,
+        origalUrl: 'https://www.google.com/',
         visitHistory : [],
     })
 
    return res.status(200).json({'shortURL': shorId})
 }
 
+async function handelGetRedirectUrl(req, res) {
+    const id = req?.params?.shortId;
+
+    const entry = await URL.findOneAndUpdate({ shortId: id }, {$push: {visitHistory: {timeStamp:Date.now()}}});
+
+     res.redirect(entry?.origalUrl)
+    return res.json({'completed':'true' , 'data': entry})
+}
+
 module.exports = {
-    handelGenerateNewShortURL
+    handelGenerateNewShortURL,
+    handelGetRedirectUrl
 }
