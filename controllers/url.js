@@ -22,10 +22,20 @@ async function handelGetRedirectUrl(req, res) {
     const entry = await URL.findOneAndUpdate({ shortId: id }, {$push: {visitHistory: {timeStamp:Date.now()}}});
 
      res.redirect(entry?.origalUrl)
-    return res.json({'completed':'true' , 'data': entry})
+    // return res.json({'completed':'true' , 'data': entry})
+}
+
+async function handelAnalytics(req, res) {
+    const id= req.params.shortId
+
+    const entry = await URL.findOne({shortId :id})
+
+
+    return res.json({'visitedHistory':entry.visitHistory.length, 'analytics': entry.visitHistory})
 }
 
 module.exports = {
     handelGenerateNewShortURL,
-    handelGetRedirectUrl
+    handelGetRedirectUrl,
+    handelAnalytics
 }
