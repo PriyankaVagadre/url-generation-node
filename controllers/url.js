@@ -34,24 +34,15 @@ async function handelAnalytics(req, res) {
     return res.json({'visitedHistory':entry.visitHistory.length, 'analytics': entry.visitHistory})
 }
 
-async function handelServerSideRendering(req, res) {
+// async function handelServerSideRendering(req, res) {
 
-    const allShortId = await URL.find({})
-    return res.end(`
-        <html>
-        <body>
-        <ol>
-        ${allShortId.map(url=> `<li>${url.shortId} - ${url.visitHistory.length}</li>`).join('')}
-        </ol>
-        </body>
-        </html>`
-    )
+//     return res.render(home)
     
-}
+// }
 
 module.exports = {
     handelGenerateNewShortURL,
     handelGetRedirectUrl,
     handelAnalytics,
-    handelServerSideRendering
+    // handelServerSideRendering
 }
