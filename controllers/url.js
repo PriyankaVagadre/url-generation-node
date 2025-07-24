@@ -34,8 +34,15 @@ async function handelAnalytics(req, res) {
     return res.json({'visitedHistory':entry.visitHistory.length, 'analytics': entry.visitHistory})
 }
 
+async function handelServerSideRendering(req, res) {
+
+    return res.end('<h1>hello</h1>')
+    
+}
+
 module.exports = {
     handelGenerateNewShortURL,
     handelGetRedirectUrl,
-    handelAnalytics
+    handelAnalytics,
+    handelServerSideRendering
 }
