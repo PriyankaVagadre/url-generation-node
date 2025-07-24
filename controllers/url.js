@@ -36,7 +36,16 @@ async function handelAnalytics(req, res) {
 
 async function handelServerSideRendering(req, res) {
 
-    return res.end('<h1>hello</h1>')
+    const allShortId = await URL.find({})
+    return res.end(`
+        <html>
+        <body>
+        <ol>
+        ${allShortId.map(url=> `<li>${url.shortId} - ${url.visitHistory.length}</li>`).join('')}
+        </ol>
+        </body>
+        </html>`
+    )
     
 }
 
