@@ -14,6 +14,7 @@ const {connectToDB} = require('./connect');
 connectToDB('mongodb://127.0.0.1:27017/shorturl').then(()=> console.log('db connected'))
 
 app.use(express.json())
+app.use(express.urlencoded({extended:false}))
 
 app.use('/', urlRouter)
 
