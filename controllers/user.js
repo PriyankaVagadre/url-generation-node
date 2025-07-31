@@ -15,4 +15,17 @@ async function handelUserRequest(req,res) {
     return res.json({status: 'ok'})
 }
 
-module.exports = {handelUserRequest}
+async function handelUserLoginRequest(req,res) {
+    const {email, password} = req.body
+
+    if(!req.body) return;
+
+    const user = await User.findOne({email,password})
+
+    if(user) return res.redirect('/url/server')
+
+    else 
+        return res.json({status:'login failed'})
+}
+
+module.exports = {handelUserRequest, handelUserLoginRequest}

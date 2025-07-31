@@ -28,5 +28,9 @@ app.get('/user/signup', (req,res)=>{
     res.render('signup')
 })
 
+app.get('/user/login', (req,res)=>{
+    res.render('login')
+})
+
 
 app.listen(PORT, ()=> console.log('Server started ' +`${PORT}`))
