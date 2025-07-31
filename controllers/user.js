@@ -1,5 +1,7 @@
 const express = require('express');
 const User = require('../models/user');
+const { v4 : uuidv4} = require('uuid')
+const { setUser} = require('../service/auth')
 
 async function handelUserRequest(req,res) {
     const {name, email, password} = req.body
@@ -22,7 +24,15 @@ async function handelUserLoginRequest(req,res) {
 
     const user = await User.findOne({email,password})
 
-    if(user) return res.redirect('/url/server')
+    if(user) {
+        const sessionID = uuidv4();
+
+        setUser(sessionID, user)
+
+        res.cookie('uid', sessionID)
+        return res.redirect('/url/server')
+
+    }
 
     else 
         return res.json({status:'login failed'})
